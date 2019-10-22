@@ -1,0 +1,10 @@
+<p>search works!</p>
+<mat-form-field>
+    <input matInput placeholder="Search by title" [(ngModel)]="title">
+</mat-form-field>
+<button mat-button (click)="search()">Search</button>
+<mat-list>
+    <mat-list-item *ngFor="let movie of movies">
+        {{movie?.Title}}
+    </mat-list-item>
+</mat-list>
