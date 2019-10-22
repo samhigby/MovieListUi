@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MovieListApiService } from '../services/movie-list-api.service';
 
 @Component({
   selector: 'app-list-list',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-list.component.scss']
 })
 export class ListListComponent implements OnInit {
-
-  constructor() { }
+  listOfLists: any[];
+  constructor(private api: MovieListApiService) { }
 
   ngOnInit() {
+    this.api.getLists().subscribe((list) =>
+      this.listOfLists = list
+    );
   }
 
 }
