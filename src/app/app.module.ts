@@ -13,6 +13,8 @@ import { ListFormComponent } from './list-form/list-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchComponent } from './search/search.component';
 import { AverageRatingPipe } from './pipes/average-rating.pipe';
+import { MovieComponent } from './movie/movie.component';
+import { StarsComponent } from './stars/stars.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { AverageRatingPipe } from './pipes/average-rating.pipe';
     MovieListComponent,
     ListFormComponent,
     SearchComponent,
-    AverageRatingPipe
+    AverageRatingPipe,
+    MovieComponent,
+    StarsComponent
   ],
   imports: [
     BrowserModule,

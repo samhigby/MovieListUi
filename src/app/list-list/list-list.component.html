@@ -2,6 +2,6 @@
 <button mat-button (click)="openForm()">Add</button>
 <mat-action-list>
     <button mat-list-item (click)="openList(list)" *ngFor="let list of listOfLists">
-        {{list?.name}} Average Rating:{{list?.movies | averageRating}}  Total Movies:{{list?.movies?.length}}
+        {{list?.name}} Average Rating:<app-stars [buttons]="false" [rating]="list?.movies | averageRating"></app-stars>{{list?.movies | averageRating}}  Total Movies:{{list?.movies?.length}}
     </button>
 </mat-action-list>
