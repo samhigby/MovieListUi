@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { List } from '../interfaces/list';
 
 @Component({
   selector: 'app-list-form',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialogRef: MatDialogRef<ListFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: List) {}
 
   ngOnInit() {
+
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }

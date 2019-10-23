@@ -1,1 +1,15 @@
-<p>list-form works!</p>
+<form #listForm="ngForm">
+  <h1 mat-dialog-title>Create a List</h1>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <input matInput required [(ngModel)]="data.name" placeholder="Name" id="name" name="name" #name="ngModel">
+      <mat-error *ngIf="!name.valid || !name.pristine">
+          Name is required
+        </mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button [disabled]="!listForm.form.valid" [mat-dialog-close]="data">Ok</button>
+  </div>
+</form>

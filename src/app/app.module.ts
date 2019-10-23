@@ -31,6 +31,7 @@ import { AverageRatingPipe } from './pipes/average-rating.pipe';
     HttpClientModule,
     FormsModule
   ],
+  entryComponents: [ListFormComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

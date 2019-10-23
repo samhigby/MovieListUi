@@ -9,9 +9,15 @@ import { List } from '../interfaces/list';
 })
 export class MovieListApiService {
 
-  constructor(private http: HttpClient) { }
+  selectedList: List;
+
+  constructor(private http: HttpClient) {}
 
   getLists(): Observable<List[]> {
     return this.http.get<List[]>(`${environment.apiUrl}lists`);
+  }
+
+  addList(list: List): Observable<List> {
+    return this.http.post<List>(`${environment.apiUrl}lists`, list);
   }
 }
