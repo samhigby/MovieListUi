@@ -1,6 +1,6 @@
-<p>list-list works!</p>
-<mat-list>
-    <mat-list-item *ngFor="let list of listOfLists">
-        {{list?.name}}
-    </mat-list-item>
-</mat-list>
+<h3>Lists</h3>
+<mat-action-list>
+    <button mat-list-item (click)="open(list)" *ngFor="let list of listOfLists">
+        {{list?.name}} Average Rating:{{list?.movies | averageRating}}  Total Movies:{{list?.movies.length}}
+    </button>
+</mat-action-list>

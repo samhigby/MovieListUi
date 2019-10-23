@@ -12,6 +12,7 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 import { ListFormComponent } from './list-form/list-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchComponent } from './search/search.component';
+import { AverageRatingPipe } from './pipes/average-rating.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SearchComponent } from './search/search.component';
     ListListComponent,
     MovieListComponent,
     ListFormComponent,
-    SearchComponent
+    SearchComponent,
+    AverageRatingPipe
   ],
   imports: [
     BrowserModule,
