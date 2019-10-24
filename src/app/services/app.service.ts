@@ -8,7 +8,7 @@ import { List } from '../interfaces/list';
 })
 export class AppService {
 
-  private readonly _currentMovieList = new BehaviorSubject<List>({name: ''});
+  private readonly _currentMovieList = new BehaviorSubject<List>({ id: 0, name: ''});
   readonly currentMovieList$ = this._currentMovieList.asObservable();
 
   constructor() { }
