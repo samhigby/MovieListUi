@@ -1,11 +1,18 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Movie } from '../interfaces/movie';
 
 @Pipe({
   name: 'averageRating'
 })
 export class AverageRatingPipe implements PipeTransform {
+// TODO: Write unit test
 
-  transform(value: any[], ...args: any[]): any {
+  /**
+   * 
+   * @param value 
+   * @param args 
+   */
+  transform(value: Movie[], ...args: any[]): any {
     let average = 0;
     if (value && value.length > 0) {
       const values = value.reduce((data, movie) => {

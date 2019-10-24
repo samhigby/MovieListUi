@@ -3,6 +3,8 @@ import { MovieListApiService } from '../services/movie-list-api.service';
 import { List } from '../interfaces/list';
 import { MatDialog } from '@angular/material/dialog';
 import { ListFormComponent } from '../list-form/list-form.component';
+import { AppService } from '../services/app.service';
+import { Movie } from '../interfaces/movie';
 
 @Component({
   selector: 'app-list-list',
@@ -11,7 +13,8 @@ import { ListFormComponent } from '../list-form/list-form.component';
 })
 export class ListListComponent implements OnInit {
   listOfLists: List[];
-  constructor(private api: MovieListApiService, public dialog: MatDialog) { }
+  constructor(private api: MovieListApiService, public dialog: MatDialog,
+              private app: AppService) { }
 
   ngOnInit() {
     this.api.getLists().subscribe((list: List[]) =>
@@ -19,8 +22,8 @@ export class ListListComponent implements OnInit {
     );
   }
 
-  openList(list) {
-    console.log(list);
+  openList(list: List) {
+    this.app.currentMovieList = list;
   }
   openForm() {
     const dialogRef = this.dialog.open(ListFormComponent, {

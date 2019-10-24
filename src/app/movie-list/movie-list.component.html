@@ -1,1 +1,7 @@
-<p>movie-list works!</p>
+<div>
+    <h3>{{currentMovieList.name}}</h3>
+    <mat-list>
+        <app-movie [movie]="movie" *ngFor="let movie of currentMovieList.movies"></app-movie>
+    </mat-list>
+</div>
+

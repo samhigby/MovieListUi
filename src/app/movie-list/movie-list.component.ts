@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
+import { AppService } from '../services/app.service';
+import { Movie } from '../interfaces/movie';
+import { List } from '../interfaces/list';
 
 @Component({
   selector: 'app-movie-list',
@@ -6,10 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent implements OnInit {
-
-  constructor() { }
+  currentMovieList: List;
+  constructor(private app: AppService) { }
 
   ngOnInit() {
+    this.app.currentMovieList$.subscribe((movieList) => this.currentMovieList = movieList);
   }
 
 }

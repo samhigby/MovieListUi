@@ -1,2 +1,13 @@
-<app-search></app-search>
-<app-list-list></app-list-list>
+<!-- <app-search></app-search> -->
+
+
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side" opened>
+        <app-list-list></app-list-list>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+        <app-movie-list></app-movie-list>
+    </div>
+
+</mat-drawer-container>
