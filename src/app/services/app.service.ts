@@ -25,6 +25,7 @@ export class AppService {
   }
 
   set movieLists(val: List[]) {
+    this.currentMovieList = val[this.currentMovieListIndex];
     this._movieLists.next(val);
   }
 
@@ -37,10 +38,10 @@ export class AppService {
   }
   get currentMovieList(): List {
     return this._movieLists.getValue()[this._currentMovieListIndex.getValue()];
-   // return this._currentMovieList.getValue();
   }
 
   set currentMovieList(val: List) {
     this._currentMovieList.next(val);
   }
+
 }

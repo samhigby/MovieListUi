@@ -13,7 +13,6 @@ export class MovieComponent implements OnInit {
  @Input() showAdd: boolean;
  @Input() showDelete: boolean;
 
-
   constructor(private api: MovieListApiService, private app: AppService) { }
 
   ngOnInit() {
