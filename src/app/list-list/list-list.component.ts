@@ -17,13 +17,14 @@ export class ListListComponent implements OnInit {
               private app: AppService) { }
 
   ngOnInit() {
+    this.app.movieLists$.subscribe((list) => this.listOfLists = list);
     this.api.getLists().subscribe((list: List[]) =>
-      this.listOfLists = list
+      this.app.movieLists = list
     );
   }
 
-  openList(list: List) {
-    this.app.currentMovieList = list;
+  openList(index: number) {
+    this.app.currentMovieListIndex = index;
   }
   openForm() {
     const dialogRef = this.dialog.open(ListFormComponent, {

@@ -1,7 +1,7 @@
 <div>
-    <h3>{{currentMovieList.name}}</h3>
+    <h3>{{currentMovieList?.name}}</h3>
     <mat-list>
-        <app-movie [movie]="movie" *ngFor="let movie of currentMovieList.movies"></app-movie>
+        <app-movie [movie]="movie" [showDelete]="true" *ngFor="let movie of currentMovieList?.movies"></app-movie>
     </mat-list>
 </div>
 

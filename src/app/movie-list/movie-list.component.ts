@@ -13,7 +13,14 @@ export class MovieListComponent implements OnInit {
   constructor(private app: AppService) { }
 
   ngOnInit() {
-    this.app.currentMovieList$.subscribe((movieList) => this.currentMovieList = movieList);
+
+    this.app.currentMovieListIndex$.subscribe((index) => {
+      if (index !== null) {
+        this.app.movieLists$.subscribe((list) => {
+          this.currentMovieList = list[index];
+        });
+      }
+    });
   }
 
 }

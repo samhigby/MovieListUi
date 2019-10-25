@@ -1,14 +1,15 @@
 <mat-card>
     <mat-card-header>
-        <img mat-card-avatar src={{movie.poster}} alt="n/a">
-        <mat-card-title>{{movie.title}}</mat-card-title>
-        <mat-card-subtitle>{{movie.year}}</mat-card-subtitle>
+        <img mat-card-avatar src={{movie?.poster}} alt="n/a">
+        <mat-card-title>{{movie?.title}}</mat-card-title>
+        <mat-card-subtitle>{{movie?.year}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        <app-stars [rating]="movie.rating" [buttons]="true" (vote)="onVote($event)"></app-stars>
+        <app-stars [rating]="movie?.rating" [buttons]="true" (vote)="saveRating($event)"></app-stars>
     </mat-card-content>
 
     <mat-card-actions>
-        <button mat-button (click)="addToCurrentList()">Add to current list</button>
+        <button *ngIf="showAdd" mat-button (click)="addToCurrentList()">Add to {{this.app.currentMovieList?.name}}</button>
+        <button *ngIf="showDelete" mat-button (click)="removeFromCurrentList()">Remove from {{this.app.currentMovieList?.name}}</button>
     </mat-card-actions>
 </mat-card>

@@ -6,7 +6,7 @@
 </div>
 
 <mat-action-list>
-    <button mat-list-item (click)="openList(list)" *ngFor="let list of listOfLists">
+    <button mat-list-item (click)="openList(i)" *ngFor="let list of listOfLists; index as i">
         <div class="flex-item grow">
             {{list?.name}}
         </div>

@@ -3,5 +3,5 @@
 </mat-form-field>
 <button mat-button (click)="search()">Search</button>
 <mat-list>
-    <app-movie [movie]="movie" *ngFor="let movie of movies"></app-movie>
+    <app-movie [movie]="movie" [showAdd]="true" [showDelete]="false" *ngFor="let movie of movies"></app-movie>
 </mat-list>
