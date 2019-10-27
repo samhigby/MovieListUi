@@ -1,0 +1,9 @@
+
+<mat-toolbar color="primary">
+        <span>Movie List</span>
+        <span class="space-between"></span>
+        <mat-form-field>
+                <input matInput placeholder="Search by title" [(ngModel)]="title">
+        </mat-form-field>
+        <button mat-button (click)="search()">Search</button>
+</mat-toolbar>

@@ -15,6 +15,7 @@ import { SearchComponent } from './search/search.component';
 import { AverageRatingPipe } from './pipes/average-rating.pipe';
 import { MovieComponent } from './movie/movie.component';
 import { StarsComponent } from './stars/stars.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { StarsComponent } from './stars/stars.component';
     SearchComponent,
     AverageRatingPipe,
     MovieComponent,
-    StarsComponent
+    StarsComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,

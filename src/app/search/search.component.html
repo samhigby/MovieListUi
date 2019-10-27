@@ -1,7 +1,8 @@
-<mat-form-field>
+<!-- <mat-form-field>
     <input matInput placeholder="Search by title" [(ngModel)]="title">
-</mat-form-field>
-<button mat-button (click)="search()">Search</button>
-<mat-list>
+</mat-form-field> -->
+
+<mat-list *ngIf="app.search !==''">
+        <h3 mat-subheader>Search</h3>
     <app-movie [movie]="movie" [showAdd]="true" [showDelete]="false" *ngFor="let movie of movies"></app-movie>
 </mat-list>

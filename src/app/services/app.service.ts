@@ -24,6 +24,9 @@ export class AppService {
   private readonly _sortBy = new BehaviorSubject<string>('title-asc');
   readonly sortBy$ = this._sortBy.asObservable();
 
+  private readonly _search = new BehaviorSubject<string>('');
+  readonly search$ = this._search.asObservable();
+
   readonly filteredMovieList$ = this.currentMovieList$.pipe(
     // map((movieList: List) => movieList.movies = movieList.movies.filter((movie) => movie.title.toLowerCase().includes(this.filter)))
     map((movieList: List) => {
@@ -43,6 +46,13 @@ export class AppService {
 
 
   constructor() { }
+
+  get search(): string {
+    return this._search.getValue();
+  }
+  set search(val: string) {
+    this._search.next(val);
+  }
 
   get sortBy(): string {
     return this._sortBy.getValue();
@@ -75,6 +85,7 @@ export class AppService {
     return this._currentMovieListIndex.getValue();
   }
   set currentMovieListIndex(index: number) {
+    this.search = '';
     this.currentMovieList = this.movieLists[index];
     this._currentMovieListIndex.next(index);
   }

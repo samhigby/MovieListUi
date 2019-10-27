@@ -9,7 +9,7 @@
     </mat-card-content>
 
     <mat-card-actions>
-        <button *ngIf="showAdd" mat-button (click)="addToCurrentList()">Add to {{this.app.currentMovieList?.name}}</button>
+        <button *ngIf="showAdd && app.currentMovieList" mat-button (click)="addToCurrentList()">Add to {{this.app.currentMovieList?.name}}</button>
         <button *ngIf="showDelete" mat-button (click)="removeFromCurrentList()">Remove from {{this.app.currentMovieList?.name}}</button>
     </mat-card-actions>
 </mat-card>

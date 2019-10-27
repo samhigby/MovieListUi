@@ -17,7 +17,7 @@
     </mat-list>
 </div> -->
 
-<div *ngIf="currentMovieList">
+<div *ngIf="currentMovieList && app.search ===''">
     <h3>{{currentMovieList?.name}}</h3>
     <mat-form-field>
             <input matInput placeholder="Filter by" [(ngModel)]="app.filter" />
