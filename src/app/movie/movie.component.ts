@@ -28,11 +28,16 @@ export class MovieComponent implements OnInit {
 
   addToCurrentList() {
     this.api.addMovieToList(this.movie, this.app.currentMovieList)
-    .subscribe((movie) => movie ? this.app.currentMovieList.movies.push(movie) : null);
+    .subscribe((movie) => {
+      this.app.addToMovieList(movie, this.app.currentMovieListIndex);
+      // const newMovies = [...this.app.movieLists[this.app.currentMovieListIndex].movies];
+      // newMovies.push(movie);
+      // return movie ? this.app.movieLists[this.app.currentMovieListIndex].movies = newMovies : null;
+    });
   }
   removeFromCurrentList() {
     this.api.removeMovieFromList(this.movie.id, this.app.currentMovieList.id)
-    .subscribe((list) => list ? this.app.currentMovieList = list : null);
+    .subscribe((movie) => this.app.removeMovieFromList(movie, this.app.currentMovieListIndex));
   }
 
 }

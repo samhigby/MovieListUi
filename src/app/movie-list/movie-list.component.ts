@@ -11,6 +11,7 @@ import { List } from '../interfaces/list';
 export class MovieListComponent implements OnInit {
   currentMovieList: List;
   filteredMovieList: List;
+  listOfLists: List[];
   filter = '';
   sort = 'title';
 
@@ -19,23 +20,34 @@ export class MovieListComponent implements OnInit {
 
   ngOnInit() {
 
-    this.app.currentMovieListIndex$.subscribe((index) => {
-      if (index !== null) {
-        this.app.movieLists$.subscribe((list) => {
-          this.currentMovieList = list[index];
-          this.filteredMovieList = { ...this.currentMovieList };
-          this.applyFilter();
-          this.sortBy();
-        });
-      }
+    this.app.currentMovieList$.subscribe((list) => {
+      this.currentMovieList = list;
     });
 
-    this.app.currentMovieList$.subscribe((movieList) => {
-      this.filteredMovieList = { ...movieList };
-      this.applyFilter();
-      this.sortBy();
-    })
-  }
+    // this.app.currentMovieListIndex$.subscribe((index) => {
+    //   if (index !== null) {
+    //     this.app.movieLists$.subscribe((list) => {
+    //       this.currentMovieList = list[index];
+    //       this.filteredMovieList = { ...this.currentMovieList };
+    //       this.applyFilter();
+    //       this.sortBy();
+    //     });
+    //   }
+    // });
+    // this.app.movieLists$.subscribe((list) => {
+    //   this.listOfLists = list;
+    //   this.currentMovieList = list[this.app.currentMovieListIndex];
+    //   this.filteredMovieList = { ...this.currentMovieList };
+    //       this.applyFilter();
+    //       this.sortBy();
+    // } );
+
+  //   this.app.currentMovieList$.subscribe((movieList) => {
+  //     this.filteredMovieList = { ...movieList };
+  //     this.applyFilter();
+  //     this.sortBy();
+  //   });
+ }
 
   applyFilter() {
     if (this.currentMovieList) {

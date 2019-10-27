@@ -23,7 +23,6 @@ export class AppService {
   get movieLists(): List[] {
     return this._movieLists.getValue();
   }
-
   set movieLists(val: List[]) {
     this.currentMovieList = val[this.currentMovieListIndex];
     this._movieLists.next(val);
@@ -32,16 +31,29 @@ export class AppService {
   get currentMovieListIndex(): number {
     return this._currentMovieListIndex.getValue();
   }
-
   set currentMovieListIndex(index: number) {
+    this.currentMovieList =  this.movieLists[index];
     this._currentMovieListIndex.next(index);
   }
-  get currentMovieList(): List {
-    return this._movieLists.getValue()[this._currentMovieListIndex.getValue()];
-  }
 
+  get currentMovieList(): List {
+    return this.movieLists[this.currentMovieListIndex];
+  }
   set currentMovieList(val: List) {
     this._currentMovieList.next(val);
   }
 
+
+  addToMovieList(movie: Movie, listIndex: number) {
+    const newMovieList = {...this.movieLists[listIndex]};
+    newMovieList.movies.push(movie);
+    this.movieLists = [...this.movieLists];
+    this.movieLists[listIndex] = newMovieList;
+  }
+
+  removeMovieFromList(movie: Movie, listIndex: number) {
+    const newMovieList = {...this.movieLists[listIndex]};
+    this.movieLists = [...this.movieLists];
+    this.movieLists[listIndex].movies = newMovieList.movies.filter((originalMovie) => originalMovie.imdb_id !== movie.imdb_id);
+  }
 }

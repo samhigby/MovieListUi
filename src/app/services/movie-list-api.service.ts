@@ -35,8 +35,8 @@ export class MovieListApiService {
   addMovieToList(movie: Movie, list: List): Observable<Movie> {
     return this.http.post<Movie>(`${environment.apiUrl}lists/${list.id}/movies`, movie);
   }
-  removeMovieFromList(movieId: number, listId: number): Observable<List> {
-    return this.http.delete<List>(`${environment.apiUrl}lists/${listId}/movies/${movieId}`);
+  removeMovieFromList(movieId: number, listId: number): Observable<Movie> {
+    return this.http.delete<Movie>(`${environment.apiUrl}lists/${listId}/movies/${movieId}`);
   }
   updateMovieList(list: List): Observable<List> {
     return this.http.put<List>(`${environment.apiUrl}lists/${list.id}`, list);

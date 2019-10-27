@@ -1,4 +1,4 @@
-<div *ngIf="currentMovieList">
+<!-- <div *ngIf="currentMovieList">
     <h3>{{filteredMovieList?.name}}</h3>
 
     <mat-form-field>
@@ -14,5 +14,13 @@
 
     <mat-list>
         <app-movie [movie]="movie" [showDelete]="true" *ngFor="let movie of filteredMovieList?.movies"></app-movie>
+    </mat-list>
+</div> -->
+
+<div *ngIf="currentMovieList">
+    <h3>{{currentMovieList?.name}}</h3>
+
+    <mat-list>
+        <app-movie [movie]="movie" [showDelete]="true" *ngFor="let movie of currentMovieList?.movies"></app-movie>
     </mat-list>
 </div>
