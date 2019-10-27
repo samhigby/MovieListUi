@@ -15,7 +15,7 @@ export class StarsComponent implements OnInit {
   ngOnInit() {
   }
   starType(value: number): string {
-    if (value < this.rating && value > this.rating - 1 ) {
+    if (value - 1 < this.rating && value > this.rating ) {
       return 'star_half';
     }
     if ( value <= this.rating) {

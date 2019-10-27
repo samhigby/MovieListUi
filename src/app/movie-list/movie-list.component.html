@@ -19,8 +19,24 @@
 
 <div *ngIf="currentMovieList">
     <h3>{{currentMovieList?.name}}</h3>
+    <mat-form-field>
+            <input matInput placeholder="Filter by" [(ngModel)]="app.filter" />
+    </mat-form-field>
+
+    <mat-form-field>
+            <mat-label>Sort by</mat-label>
+            <mat-select [(ngModel)]="app.sortBy" >
+                <mat-option value="title-asc">Title (asc)</mat-option>
+                <mat-option value="title-desc">Title (desc)</mat-option>
+                <mat-option value="rating-asc">Rating (asc)</mat-option>
+                <mat-option value="rating-desc">Rating (desc)</mat-option>
+            </mat-select>
+        </mat-form-field>
+    <!-- <mat-list>
+        <app-movie [movie]="movie" [showDelete]="true" *ngFor="let movie of currentMovieList?.movies"></app-movie>
+    </mat-list> -->
 
     <mat-list>
-        <app-movie [movie]="movie" [showDelete]="true" *ngFor="let movie of currentMovieList?.movies"></app-movie>
+        <app-movie [movie]="movie" [showDelete]="true" *ngFor="let movie of app.filteredMovieList$ | async"></app-movie>
     </mat-list>
 </div>

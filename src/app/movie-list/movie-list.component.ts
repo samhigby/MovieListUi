@@ -16,13 +16,17 @@ export class MovieListComponent implements OnInit {
   sort = 'title';
 
 
-  constructor(private app: AppService) { }
+  constructor(public app: AppService) { }
 
   ngOnInit() {
 
     this.app.currentMovieList$.subscribe((list) => {
       this.currentMovieList = list;
     });
+
+    // this.app.filteredMovieList$.subscribe((list) => {
+    //   this.currentMovieList.movies = list;
+    // });
 
     // this.app.currentMovieListIndex$.subscribe((index) => {
     //   if (index !== null) {
@@ -50,18 +54,18 @@ export class MovieListComponent implements OnInit {
  }
 
   applyFilter() {
-    if (this.currentMovieList) {
-      this.filteredMovieList.movies = this.currentMovieList.movies.filter((movie) => {
-        return movie.title.toLowerCase().includes(this.filter.toLowerCase());
-      });
-    }
+    // this.app.sortBy = 
+    // if (this.currentMovieList) {
+
+      // this.filteredMovieList.movies = this.currentMovieList.movies.filter((movie) => {
+      //   return movie.title.toLowerCase().includes(this.filter.toLowerCase());
+      // });
+    //}
 
   }
 
   sortBy() {
-    if (this.currentMovieList) {
-      this.filteredMovieList.movies = this.filteredMovieList.movies.sort(this.compareValues(this.sort));
-    }
+    
 
   }
 
