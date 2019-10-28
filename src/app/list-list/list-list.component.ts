@@ -4,7 +4,6 @@ import { List } from '../interfaces/list';
 import { MatDialog } from '@angular/material/dialog';
 import { ListFormComponent } from '../list-form/list-form.component';
 import { AppService } from '../services/app.service';
-import { Movie } from '../interfaces/movie';
 
 @Component({
   selector: 'app-list-list',

@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { environment} from '../../environments/environment';
 import { List } from '../interfaces/list';
 import { Movie } from '../interfaces/movie';
-import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

@@ -11,7 +11,6 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar';
 
-
 @NgModule({
     exports: [
         MatListModule, MatFormFieldModule,
