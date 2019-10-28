@@ -27,6 +27,9 @@ export class AppService {
   private readonly _search = new BehaviorSubject<string>('');
   readonly search$ = this._search.asObservable();
 
+  private readonly _movieBeingAdded = new BehaviorSubject<Movie>(null);
+  readonly movieBeingAdded$ = this._movieBeingAdded.asObservable();
+
   readonly filteredMovieList$ = this.currentMovieList$.pipe(
      map((movieList: List) => {
       let filteredMovies: Movie[];
@@ -44,6 +47,14 @@ export class AppService {
   );
 
   constructor() { }
+
+
+  get movieBeingAdded(): Movie {
+    return this._movieBeingAdded.getValue();
+  }
+  set movieBeingAdded(val: Movie) {
+    this._movieBeingAdded.next(val);
+  }
 
   get search(): string {
     return this._search.getValue();

@@ -9,12 +9,7 @@
     </mat-card-content>
 
     <mat-card-actions>
-        <mat-form-field *ngIf="showAdd">
-            <mat-label>Add to lists</mat-label>
-            <mat-select multiple>
-                <mat-option (click)=selectOption($event) *ngFor="let list of app.movieLists$ | async ; index as i" [value]="i">{{list.name}}</mat-option>
-            </mat-select>
-        </mat-form-field>
+        <button mat-button *ngIf="showAdd" (click)="displayAddDialog()">Add to Lists</button>
 
         <button *ngIf="showDelete" mat-button (click)="removeFromCurrentList()">Remove from
             {{this.app.currentMovieList?.name}}</button>

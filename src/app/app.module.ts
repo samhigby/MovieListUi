@@ -16,6 +16,7 @@ import { AverageRatingPipe } from './pipes/average-rating.pipe';
 import { MovieComponent } from './movie/movie.component';
 import { StarsComponent } from './stars/stars.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { AddMovieDialogComponent } from './add-movie-dialog/add-movie-dialog.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     AverageRatingPipe,
     MovieComponent,
     StarsComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    AddMovieDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     HttpClientModule,
     FormsModule
   ],
-  entryComponents: [ListFormComponent],
+  entryComponents: [ListFormComponent, AddMovieDialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

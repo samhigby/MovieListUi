@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Movie } from '../interfaces/movie';
 import { MovieListApiService } from '../services/movie-list-api.service';
 import { AppService } from '../services/app.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AddMovieDialogComponent } from '../add-movie-dialog/add-movie-dialog.component';
 
 @Component({
   selector: 'app-movie',
@@ -13,7 +15,7 @@ export class MovieComponent implements OnInit {
   @Input() showAdd: boolean;
   @Input() showDelete: boolean;
 
-  constructor(private api: MovieListApiService, private app: AppService) { }
+  constructor(private api: MovieListApiService, private app: AppService, public dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -37,25 +39,17 @@ export class MovieComponent implements OnInit {
       .subscribe((movie) => this.app.removeMovieFromList(movie, this.app.currentMovieListIndex));
   }
 
-  selectOption(e) {
-    const selected = (e.currentTarget.getAttribute('aria-selected') === 'false');
-    const index = parseInt(e.currentTarget.getAttribute('ng-reflect-value'), 10);
+  displayAddDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.backdropClass = 'backdrop-for-adding';
+    dialogConfig.hasBackdrop = true;
+    this.app.movieBeingAdded = this.movie;
+    const dialogRef = this.dialog.open(AddMovieDialogComponent, dialogConfig);
 
-    if (selected) {
-          this.api.addMovieToList(this.movie, this.app.movieLists[index])
-        .subscribe((movie) => {
-          this.app.addToMovieList(movie, index);
-        });
-    }
-    // This does not work with the change detection since it doesn't have a movie.id yet
-    // Out of project scope
-    // else {
-    //   this.api.removeMovieFromList(this.movie.id, index)
-    //   .subscribe((movie) => this.app.removeMovieFromList(movie, index));
-    // }
-
+    dialogRef.afterClosed().subscribe(() => {
+      this.app.movieBeingAdded = null;
+    });
   }
-
-
 
 }

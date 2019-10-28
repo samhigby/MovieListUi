@@ -1,15 +1,16 @@
 <div class="flex-container">
     <h3>Lists</h3>
     <div>
-        <button color="primary" mat-raised-button (click)="openForm()">Add</button>
+        <button color="primary" [disabled]="app.movieBeingAdded !== null" mat-raised-button (click)="openForm()">Add</button>
     </div>
 </div>
 
 <mat-action-list>
     <button mat-list-item (click)="openList(i)" *ngFor="let list of listOfLists; index as i">
-        <div class="flex-item grow">
+        <div class="list-name">
             {{list?.name}}
         </div>
+        <span class="grow"></span>
         <div class="flex-item">
             <app-stars [buttons]="false" [rating]="list?.movies | averageRating"></app-stars>
         </div>
