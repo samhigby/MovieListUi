@@ -5,13 +5,7 @@ import { Movie } from '../interfaces/movie';
   name: 'averageRating'
 })
 export class AverageRatingPipe implements PipeTransform {
-// TODO: Write unit test
 
-  /**
-   * 
-   * @param value 
-   * @param args 
-   */
   transform(value: Movie[], ...args: any[]): any {
     let average = 0;
     if (value && value.length > 0) {

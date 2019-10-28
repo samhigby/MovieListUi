@@ -9,9 +9,9 @@ import { AppService } from '../services/app.service';
   styleUrls: ['./movie.component.scss']
 })
 export class MovieComponent implements OnInit {
- @Input() movie: Movie;
- @Input() showAdd: boolean;
- @Input() showDelete: boolean;
+  @Input() movie: Movie;
+  @Input() showAdd: boolean;
+  @Input() showDelete: boolean;
 
   constructor(private api: MovieListApiService, private app: AppService) { }
 
@@ -28,16 +28,34 @@ export class MovieComponent implements OnInit {
 
   addToCurrentList() {
     this.api.addMovieToList(this.movie, this.app.currentMovieList)
-    .subscribe((movie) => {
-      this.app.addToMovieList(movie, this.app.currentMovieListIndex);
-      // const newMovies = [...this.app.movieLists[this.app.currentMovieListIndex].movies];
-      // newMovies.push(movie);
-      // return movie ? this.app.movieLists[this.app.currentMovieListIndex].movies = newMovies : null;
-    });
+      .subscribe((movie) => {
+        this.app.addToMovieList(movie, this.app.currentMovieListIndex);
+      });
   }
   removeFromCurrentList() {
     this.api.removeMovieFromList(this.movie.id, this.app.currentMovieList.id)
-    .subscribe((movie) => this.app.removeMovieFromList(movie, this.app.currentMovieListIndex));
+      .subscribe((movie) => this.app.removeMovieFromList(movie, this.app.currentMovieListIndex));
   }
+
+  selectOption(e) {
+    const selected = (e.currentTarget.getAttribute('aria-selected') === 'false');
+    const index = parseInt(e.currentTarget.getAttribute('ng-reflect-value'), 10);
+
+    if (selected) {
+          this.api.addMovieToList(this.movie, this.app.movieLists[index])
+        .subscribe((movie) => {
+          this.app.addToMovieList(movie, index);
+        });
+    }
+    // This does not work with the change detection since it doesn't have a movie.id yet
+    // Out of project scope
+    // else {
+    //   this.api.removeMovieFromList(this.movie.id, index)
+    //   .subscribe((movie) => this.app.removeMovieFromList(movie, index));
+    // }
+
+  }
+
+
 
 }

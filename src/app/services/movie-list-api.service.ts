@@ -11,8 +11,6 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class MovieListApiService {
 
-  // selectedList: List;
-
   constructor(private http: HttpClient) {}
 
   getLists(): Observable<List[]> {

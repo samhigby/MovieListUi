@@ -9,7 +9,14 @@
     </mat-card-content>
 
     <mat-card-actions>
-        <button *ngIf="showAdd && app.currentMovieList" mat-button (click)="addToCurrentList()">Add to {{this.app.currentMovieList?.name}}</button>
-        <button *ngIf="showDelete" mat-button (click)="removeFromCurrentList()">Remove from {{this.app.currentMovieList?.name}}</button>
+        <mat-form-field *ngIf="showAdd">
+            <mat-label>Add to lists</mat-label>
+            <mat-select multiple>
+                <mat-option (click)=selectOption($event) *ngFor="let list of app.movieLists$ | async ; index as i" [value]="i">{{list.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button *ngIf="showDelete" mat-button (click)="removeFromCurrentList()">Remove from
+            {{this.app.currentMovieList?.name}}</button>
     </mat-card-actions>
 </mat-card>

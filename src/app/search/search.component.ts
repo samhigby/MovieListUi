@@ -9,7 +9,6 @@ import { AppService } from '../services/app.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  // title = '';
   movies: any[];
   constructor(private app: AppService, private imdb: ImdbService, private api: MovieListApiService) { }
 
@@ -23,7 +22,6 @@ export class SearchComponent implements OnInit {
   }
 
   search(title: string) {
-    // add title check to make sure it is not blank
     this.imdb.getMovies(title).subscribe((movies) => {
       this.movies = movies;
 

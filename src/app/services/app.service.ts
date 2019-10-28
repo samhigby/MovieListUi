@@ -28,8 +28,7 @@ export class AppService {
   readonly search$ = this._search.asObservable();
 
   readonly filteredMovieList$ = this.currentMovieList$.pipe(
-    // map((movieList: List) => movieList.movies = movieList.movies.filter((movie) => movie.title.toLowerCase().includes(this.filter)))
-    map((movieList: List) => {
+     map((movieList: List) => {
       let filteredMovies: Movie[];
       if (movieList && movieList.movies) {
         filteredMovies = movieList.movies.filter((movie) => movie.title.toLowerCase().includes(this.filter.toLowerCase()));
@@ -44,7 +43,6 @@ export class AppService {
 
   );
 
-
   constructor() { }
 
   get search(): string {
@@ -57,7 +55,6 @@ export class AppService {
   get sortBy(): string {
     return this._sortBy.getValue();
   }
-
   set sortBy(val: string) {
     this._sortBy.next(val);
     this.currentMovieList = { ...this.currentMovieList };
@@ -121,7 +118,6 @@ export class AppService {
   compareValues(key, order = 'asc') {
     return (a, b) => {
       if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
-        // property doesn't exist on either object
         return 0;
       }
 
