@@ -11,11 +11,13 @@
             {{list?.name}}
         </div>
         <span class="grow"></span>
-        <div class="flex-item">
+        <div>
             <app-stars [buttons]="false" [rating]="list?.movies | averageRating"></app-stars>
         </div>
         <div class="flex-item">
-            <mat-chip>{{list?.movies?.length}}</mat-chip>
+            <mat-chip-list>
+                <mat-chip>{{list?.movies?.length}}</mat-chip>
+            </mat-chip-list>
         </div>
     </button>
 </mat-action-list>

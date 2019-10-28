@@ -1,5 +1,5 @@
 <div>
-    <button [disableRipple]="!buttons" (click)="starSelected(value)" mat-icon-button *ngFor="let value of values">
+    <button class="smaller-button" [disableRipple]="!buttons" (click)="starSelected(value)" mat-icon-button *ngFor="let value of values">
         <mat-icon>{{starType(value)}}</mat-icon>
     </button>
 </div>
